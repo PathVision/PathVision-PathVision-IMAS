@@ -1,16 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export', 
+  basePath: '/PathVision-IMAS', // REPLACE 'your-repository-name' with your actual GitHub project name
   reactStrictMode: true,
   images: {
+    unoptimized: true, 
     formats: ['image/avif', 'image/webp'],
   },
-  // Disable source maps in production for smaller bundles
   productionBrowserSourceMaps: false,
-  // Optimize framer-motion imports
   experimental: {
     optimizePackageImports: ['framer-motion'],
   },
-  // Webpack optimization for better chunk splitting
   webpack: (config, { dev, isServer }) => {
     if (!dev && !isServer) {
       config.optimization.splitChunks = {
